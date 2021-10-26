@@ -6,7 +6,10 @@ argo-cd:
   installCRDs: false
   openshift:
     enabled: false
+  controller:
+    logLevel: "debug"
   server:
+    logLevel: "debug"
     config:
       repositories: |
         - url: https://github.com/somaritane/gitops-sandbox.git
