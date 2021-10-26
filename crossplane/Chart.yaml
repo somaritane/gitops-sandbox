@@ -1,6 +1,6 @@
 apiVersion: v2
 name: crossplane
-description: Metachart for argocd deployment
+description: Metachart for crossplane deployment
 
 type: application
 
