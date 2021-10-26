@@ -1,22 +1,22 @@
-apiVersion: pkg.crossplane.io/v1alpha1
-kind: ControllerConfig
-metadata:
-  name: aws-config
-  labels:
-    app: crossplane-provider-aws
-spec:
-  image: crossplane/provider-aws-controller:v0.20.0
-  args: ["-d"]
----
-apiVersion: pkg.crossplane.io/v1
-kind: Provider
-metadata:
-  name: crossplane-provider-aws
-spec:
-  package: crossplane/provider-aws:v0.20.0
-  controllerConfigRef:
-    name: aws-config
----
+# apiVersion: pkg.crossplane.io/v1alpha1
+# kind: ControllerConfig
+# metadata:
+#   name: aws-config
+#   labels:
+#     app: crossplane-provider-aws
+# spec:
+#   image: crossplane/provider-aws-controller:v0.20.0
+#   args: ["-d"]
+# ---
+# apiVersion: pkg.crossplane.io/v1
+# kind: Provider
+# metadata:
+#   name: crossplane-provider-aws
+# spec:
+#   package: crossplane/provider-aws:v0.20.0
+#   controllerConfigRef:
+#     name: aws-config
+# ---
 apiVersion: pkg.crossplane.io/v1alpha1
 kind: ControllerConfig
 metadata:
