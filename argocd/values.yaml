@@ -8,6 +8,7 @@ argo-cd:
     enabled: false
   controller:
     logLevel: "debug"
+    logFormat: "json"
   server:
     logLevel: "debug"
     config:
