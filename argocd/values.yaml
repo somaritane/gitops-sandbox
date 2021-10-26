@@ -1,0 +1,39 @@
+argocd:
+  global:
+    image:
+      tag: "v2.1.5"
+      imagePullPolicy: IfNotPresent
+  installCRDs: false
+  openshift:
+    enabled: false
+  server:
+    config:
+      repositories: |
+        - url: https://github.com/somaritane/gitops-sandbox.git
+      repository.credentials: |
+        - url: https://github.com/somaritane/gitops-sandbox.git
+          passwordSecret:
+            name: repo-secret
+            key: token
+          usernameSecret:
+            name: repo-secret
+            key: username
+    env:
+      - name: ARGOCD_MAX_CONCURRENT_LOGIN_REQUESTS_COUNT
+        value: "0"
+    extraArgs:
+      - --insecure
+    additionalApplications:
+      - name: apps
+        namespace: argocd
+        project: default
+        source:
+          repoURL: 'https://github.com/somaritane/gitops-sandbox.git'
+          path: apps
+          targetRevision: main
+        destination:
+          server: 'https://kubernetes.default.svc'
+          namespace: argocd
+        syncPolicy:
+          syncOptions:
+            - CreateNamespace=true

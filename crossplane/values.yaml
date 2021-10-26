@@ -1,0 +1,4 @@
+crossplane:
+  crossplane:
+    image:
+      tag: v1.4.2

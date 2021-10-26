@@ -1,0 +1,13 @@
+apiVersion: v2
+name: crossplane
+description: Metachart for argocd deployment
+
+type: application
+
+version: 0.1.0
+appVersion: 0.1.0
+
+dependencies:
+  - name: crossplane
+    repository: https://charts.crossplane.io/stable
+    version: 1.4.2
