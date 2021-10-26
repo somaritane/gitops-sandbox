@@ -23,6 +23,8 @@ metadata:
   name: helm-config
   labels:
     app: crossplane-provider-helm
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   image: crossplane/provider-helm-controller:v0.9.0
   args: ["-d"]
