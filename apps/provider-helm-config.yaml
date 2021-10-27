@@ -10,7 +10,7 @@ spec:
   source:
     path: provider-helm-config/
     repoURL: https://github.com/somaritane/gitops-sandbox.git
-    targetRevision: main
+    targetRevision: deploy-providers-with-crossplane
   destination:
     namespace: crossplane-system
     server: 'https://kubernetes.default.svc'

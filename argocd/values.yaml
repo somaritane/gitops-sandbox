@@ -34,7 +34,7 @@ argo-cd:
         source:
           repoURL: 'https://github.com/somaritane/gitops-sandbox.git'
           path: apps
-          targetRevision: main
+          targetRevision: deploy-providers-with-crossplane
         destination:
           server: 'https://kubernetes.default.svc'
           namespace: argocd
