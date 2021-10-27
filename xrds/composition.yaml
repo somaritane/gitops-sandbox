@@ -20,6 +20,7 @@ spec:
               name: k8gb
               repository: https://www.k8gb.io
             namespace: k8gb
+            skipCreateNamespace: false
             values:
               k8gb:
                 imageTag: 0.8.2
