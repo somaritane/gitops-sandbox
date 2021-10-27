@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: k8gb
+  name: xrds
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "40"
+    argocd.argoproj.io/sync-wave: "30"
 spec:
   project: default
   source:
-    path: k8gb/
+    path: xrds/
     repoURL: https://github.com/somaritane/gitops-sandbox.git
     targetRevision: main
   destination:
