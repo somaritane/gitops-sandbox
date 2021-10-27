@@ -1,0 +1,42 @@
+apiVersion: apiextensions.crossplane.io/v1beta1
+kind: Composition
+metadata:
+  name: compositek8gbs.k8s.gitops.somaritane.net
+  labels:
+    provider: helm
+spec:
+  compositeTypeRef:
+    apiVersion: k8s.gitops.somaritane.net/v1alpha1
+    kind: CompositeK8gb
+  resources:
+    - base:
+        apiVersion: helm.crossplane.io/v1beta1
+        kind: Release
+        metadata:
+          name: k8gb
+        spec:
+          forProvider:
+            chart:
+              name: k8gb
+              repository: https://www.k8gb.io
+            namespace: k8gb
+            values:
+              k8gb:
+                imageTag: 0.8.2
+              coredns:
+                fullnameOverride: k8gb-coredns
+                image:
+                  tag: v0.0.7
+      patches:
+        - fromFieldPath: "metadata.namespace"
+          toFieldPath: "spec.forProvider.namespace"
+        - fromFieldPath: "spec.parameters.version"
+          toFieldPath: "spec.forProvider.chart.version"
+        - fromFieldPath: "spec.parameters.dnsZone"
+          toFieldPath: "spec.forProvider.values.k8gb.dnsZone"
+        - fromFieldPath: "spec.parameters.edgeDNSZone"
+          toFieldPath: "spec.forProvider.values.k8gb.edgeDNSZone"
+        - fromFieldPath: "spec.parameters.geoTag"
+          toFieldPath: "spec.forProvider.values.k8gb.clusterGeoTag"
+        - fromFieldPath: "spec.parameters.extGeoTags"
+          toFieldPath: "spec.forProvider.values.k8gb.extGslbClustersGeoTags"
