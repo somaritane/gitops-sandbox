@@ -9,4 +9,4 @@ spec:
     geoTag: "eu"
     extGeoTags: "us"
     dnsZone: "cloud.example.com"
-    dgeDNSZone: "example.com"
+    edgeDNSZone: "example.com"
