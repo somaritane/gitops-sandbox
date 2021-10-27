@@ -8,3 +8,5 @@ spec:
     version: v0.8.2
     geoTag: "eu"
     extGeoTags: "us"
+    dnsZone: "cloud.example.com"
+    dgeDNSZone: "example.com"
