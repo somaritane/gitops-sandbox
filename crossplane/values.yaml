@@ -2,3 +2,6 @@ crossplane:
   crossplane:
     image:
       tag: v1.5.0
+    provider:
+      packages:
+        - crossplane/provider-helm:v0.9.0
