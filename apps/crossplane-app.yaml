@@ -18,8 +18,8 @@ spec:
     syncOptions:
       - CreateNamespace=true
     automated:
-      prune: true
-      selfHeal: true
+      prune: false
+      selfHeal: false
   ignoreDifferences:
     - group: rbac.authorization.k8s.io
       kind: ClusterRole
