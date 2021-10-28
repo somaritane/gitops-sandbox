@@ -1,4 +1,8 @@
 crossplane:
-  crossplane:
-    image:
-      tag: v1.5.0
+  image:
+    tag: v1.5.0
+  args:
+   - --debug
+  rbacManager:
+    args:
+      - --debug
