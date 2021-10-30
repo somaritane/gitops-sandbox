@@ -20,3 +20,6 @@ spec:
     automated:
       prune: false
       selfHeal: false
+  ignoreDifferences:
+    - group: k8s.gitops.somaritane.net
+      kind: CompositeK8gb
