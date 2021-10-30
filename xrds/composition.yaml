@@ -23,7 +23,7 @@ spec:
             skipCreateNamespace: false
             values:
               k8gb:
-                imageTag: 0.8.2
+                imageTag: v0.8.2
               coredns:
                 fullnameOverride: k8gb-coredns
                 image:
