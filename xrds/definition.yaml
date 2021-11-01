@@ -1,12 +1,12 @@
 apiVersion: apiextensions.crossplane.io/v1beta1
 kind: CompositeResourceDefinition
 metadata:
-  name: compositek8gbs.k8s.gitops.somaritane.net
+  name: compositek8gbs.k8s.gitops.somaritane.io
 spec:
   claimNames:
     kind: k8gb
     plural: k8gbs
-  group: k8s.gitops.somaritane.net
+  group: k8s.gitops.somaritane.io
   names:
     kind: CompositeK8gb
     plural: compositek8gbs

@@ -1,12 +1,12 @@
 apiVersion: apiextensions.crossplane.io/v1beta1
 kind: Composition
 metadata:
-  name: compositek8gbs.k8s.gitops.somaritane.net
+  name: compositek8gbs.k8s.gitops.somaritane.io
   labels:
     provider: helm
 spec:
   compositeTypeRef:
-    apiVersion: k8s.gitops.somaritane.net/v1alpha1
+    apiVersion: k8s.gitops.somaritane.io/v1alpha1
     kind: CompositeK8gb
   resources:
     - base:
