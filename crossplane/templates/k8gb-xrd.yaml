@@ -1,0 +1,97 @@
+apiVersion: apiextensions.crossplane.io/v1beta1
+kind: Composition
+metadata:
+  name: compositek8gbs.k8s.k8gb.io
+  labels:
+    provider: helm
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  compositeTypeRef:
+    apiVersion: k8s.k8gb.io/v1alpha1
+    kind: CompositeK8gb
+  resources:
+    - base:
+        apiVersion: helm.crossplane.io/v1beta1
+        kind: Release
+        metadata:
+          name: k8gb
+        spec:
+          forProvider:
+            chart:
+              name: k8gb
+              repository: https://www.k8gb.io
+            namespace: k8gb
+            values:
+              k8gb:
+                imageTag: v0.8.2
+              coredns:
+                fullnameOverride: k8gb-coredns
+                image:
+                  tag: v0.0.7
+      patches:
+        - fromFieldPath: "metadata.namespace"
+          toFieldPath: "spec.forProvider.namespace"
+        - fromFieldPath: "spec.parameters.version"
+          toFieldPath: "spec.forProvider.chart.version"
+        - fromFieldPath: "spec.parameters.dnsZone"
+          toFieldPath: "spec.forProvider.values.k8gb.dnsZone"
+        - fromFieldPath: "spec.parameters.edgeDNSZone"
+          toFieldPath: "spec.forProvider.values.k8gb.edgeDNSZone"
+        - fromFieldPath: "spec.parameters.geoTag"
+          toFieldPath: "spec.forProvider.values.k8gb.clusterGeoTag"
+        - fromFieldPath: "spec.parameters.extGeoTags"
+          toFieldPath: "spec.forProvider.values.k8gb.extGslbClustersGeoTags"
+
+---
+apiVersion: apiextensions.crossplane.io/v1beta1
+kind: CompositeResourceDefinition
+metadata:
+  name: compositek8gbs.k8s.k8gb.io
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  claimNames:
+    kind: k8gb
+    plural: k8gbs
+  group: k8s.k8gb.io
+  names:
+    kind: CompositeK8gb
+    plural: compositek8gbs
+  versions:
+  - name: v1alpha1
+    served: true
+    referenceable: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              parameters:
+                type: object
+                properties:
+                  version:
+                    type: string
+                    description: "k8gb version"
+                  dnsZone:
+                    type: string
+                    description: "k8gb managed dnz zone"
+                  edgeDNSZone:
+                    type: string
+                    description: "edge DNS Zone in external DNS provider"
+                  geoTag:
+                    type: string
+                    description: "k8gb cluster GeoTag"
+                  extGeoTags:
+                    type: string
+                    description: "comma-separated list of external k8gb geo tags tocommunicate with"
+                required:
+                  - version
+                  - dnsZone
+                  - edgeDNSZone
+                  - geoTag
+                  - extGeoTags
+            required:
+              - parameters
