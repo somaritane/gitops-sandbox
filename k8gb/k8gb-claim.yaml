@@ -1,4 +1,4 @@
-apiVersion: k8s.gitops.somaritane.io/v1alpha1
+apiVersion: k8s.k8gb.io/v1alpha1
 kind: k8gb
 metadata:
   name: k8gb
