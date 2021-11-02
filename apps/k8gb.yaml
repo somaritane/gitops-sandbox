@@ -12,7 +12,7 @@ spec:
     repoURL: https://github.com/somaritane/gitops-sandbox.git
     targetRevision: main
   destination:
-    namespace: crossplane-system
+    namespace: k8gb
     server: 'https://kubernetes.default.svc'
   syncPolicy:
     syncOptions:
