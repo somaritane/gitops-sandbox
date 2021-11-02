@@ -3,6 +3,8 @@ kind: k8gb
 metadata:
   name: k8gb
   namespace: k8gb
+  annotations:
+    argocd.argoproj.io/sync-wave: "100"
 spec:
   parameters:
     version: v0.8.2

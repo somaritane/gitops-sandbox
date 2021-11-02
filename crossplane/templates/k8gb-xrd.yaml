@@ -6,6 +6,7 @@ metadata:
     provider: helm
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "50"
 spec:
   compositeTypeRef:
     apiVersion: k8s.k8gb.io/v1alpha1
@@ -50,6 +51,8 @@ metadata:
   name: compositek8gbs.k8s.k8gb.io
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "60"
+
 spec:
   claimNames:
     kind: k8gb

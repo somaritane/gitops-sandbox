@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: k8gb
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "100"
 spec:
   project: default
   source:
